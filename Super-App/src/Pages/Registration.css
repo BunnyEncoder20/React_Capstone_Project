@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Space+Mono&display=swap');
+
+/* Reset margin and padding for the entire page */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevent vertical scrollbar */
+}
+
+.loginbody {
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+
+.lhs {
+    flex: 1;
+    background-color: black;
+}
+.lhs img {
+    width: 50vw;
+    height: 100vh;
+    /* z-index: -1; */
+    position: absolute;
+}
+.discover {
+    width: 695px;
+    height: 143px;
+    position: absolute;
+
+    left: 62px;
+    bottom: 122px;
+}
+.discover h1 {
+    color: #FFF;
+    font-family: 'Roboto';
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 141.688%; /* 77.928px */
+    letter-spacing: 1.1px;
+}
+
+
+.rhs {
+    flex: 1;
+    background-color: black;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Vertically center */
+    align-items: center; /* Horizontally center */
+    color: white;
+
+    color: #7C7C7C;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 139.688%; /* 27.984px */
+    letter-spacing: 0.401px;
+}
+.rhs h1 {
+    color: #72DB73;
+    font-family: 'Single Day';
+    font-size: 67px;
+    line-height: 139.688%; /* 93.591px */
+
+    margin: 0px ;
+}
+.sub_title  {
+    color: #FFF;
+    font-family: 'DM Sans';
+    font-size: 25px;
+    line-height: 139.688%; /* 34.922px */
+
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+.formElement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center */
+    align-items: center; /* Horizontally center */
+}
+.formElement input[type='text']  {
+    width: 518px;
+    height: 60px;
+    border-radius: 3.816px;
+    background: #292929;
+}
+
+.signup_btn {
+    width: 418px;
+    height: 55px;
+
+    border-radius: 28px;
+    background: #72DB73;
+
+    color: #FFF;
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 108.688%; /* 31.519px */
+    letter-spacing: 0.58px;
+}
+
+.termsNconditions {
+    width: 518px;
+    text-align: center;
+}
