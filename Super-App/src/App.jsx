@@ -1,4 +1,4 @@
-import Registration from "./Pages/Registration"
+import Registration from "./Components/Registration"
 
 
 function App() {
