@@ -1,4 +1,5 @@
 import Registration from "./Components/Registration"
+import TempRegistration from "./Components/TempRegistration"
 
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
       <Registration/>
+      {/* <TempRegistration/> */}
     </>
   )
 }

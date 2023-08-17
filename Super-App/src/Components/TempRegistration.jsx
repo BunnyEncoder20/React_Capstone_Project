@@ -38,24 +38,40 @@ function Registration() {
     // 34 |    useEffect = (() => {
     // ERROR  : Assignment to constant variable 
 
-    const storedformData = JSON.parse(localStorage.getItem('formData')) ;
+    // const storedformData = JSON.parse(localStorage.getItem('formData')) ;
 
-    const initialformData = {
-        name : "",
-        username : "",
-        email : "",
-        mobile : 0,
-        sharedata : false
-    }
+    // const initialformData = {
+    //     name : "",
+    //     username : "",
+    //     email : "",
+    //     mobile : 0,
+    //     sharedata : false
+    // }
 
-    const [formData, setformData] = useState(storedformData || initialformData);
-    // this way, the formData state will be filled with a combination of both these 
+    // These both not working cause somehow null is getting into the localStorage on refresh
+    const [formData, setformData] = useState({});
+    // const [formData, setformData] = useState({
+    //     name : "",
+    //     username : "",
+    //     email : "",
+    //     mobile : 0,
+    //     sharedata : false
+    // });
+
+    useEffect(()=>{
+        const storedformData = JSON.parse(localStorage.getItem('formData')) ;
+        if (storedformData!==null) 
+            setformData(storedformData);
+
+        console.log('retrived value : ',storedformData);
+    },[])
 
     useEffect(() => {
-        console.log('formData : ',formData);
-        console.log('retrived value : ',storedformData);
+        console.log('formData Update detected : ',formData);
+        console.log("Saving to localStorage");
 
-        localStorage.setItem('formData', JSON.stringify(formData))
+        if (formData!==null) 
+            localStorage.setItem('formData', JSON.stringify(formData))
 
     }, [formData]);
 
