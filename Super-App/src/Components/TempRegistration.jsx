@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {useForm} from 'react-hook-form'
 import {DevTool} from "@hookform/devtools" ;
 
-import './Registration.css'
+import './Styles/Registration.css'
 
 import partyImg from '../assets/party image.png'
 import WebFont from 'webfontloader';  // installed webfontloader package for the font to be loaded directly from the Google Fonts website
