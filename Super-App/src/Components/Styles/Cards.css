@@ -1,32 +1,45 @@
 .cardContainer {
-    width: 15rem;
-    height: 13rem;
+    width: 13rem;
+    height: 12rem;
     flex-shrink: 0;
     border-radius: 0.7rem;
-    box-shadow: 0px 10px 8px #999;
+    /* box-shadow: 0px 10px 8px #999; */
     box-sizing:border-box;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 15px 15px 15px 15px;
-    margin: 1rem;
+    margin: 0.5rem;
 
-    background-color: black;
+    /* background-color: black; */
+}
+.cardContainer:hover{
+    cursor: pointer;
+    scale: 1.05;
+    color: white;
+}
+.cardContainer:active{
+    scale: 0.95;
 }
 
 .cardImg {
     width: 100%;
     border-radius: 0.7rem;
+
+    width: 15;
+    height: 10;
+
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.55);
 }
 
 .cardTitle {
     color: #FFF;
     font-family: 'DM Sans';
-    font-size: 36px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 
-    margin: 0;
+    margin: 0 0 15px 0;
 }

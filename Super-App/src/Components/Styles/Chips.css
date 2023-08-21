@@ -1,0 +1,22 @@
+.chip {
+    width: fit-content;
+    height: 52px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    
+    border-radius: 31px;
+    background: #148A08;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chiptext{
+    color: #FFF;
+    font-family: 'Roboto';
+    font-size: 25.143px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 105.688%; /* 26.573px */
+    letter-spacing: 0.503px;
+}
