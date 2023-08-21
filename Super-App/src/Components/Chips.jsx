@@ -5,10 +5,10 @@ import './Styles/Chips.css'
 import { AiOutlineClose } from 'react-icons/Ai';
 
 
-function Chips({chipTitle}) {
+function Chips({chipTitle,toggleFunc}) {
   return (
     <div className='chip'>
-        <span className='chiptext'>{chipTitle} <AiOutlineClose/></span>
+        <span className='chiptext'>{chipTitle} <AiOutlineClose onClick={toggleFunc} style={{cursor:'pointer', textDecoration:'Bold'}} /></span>
     </div>
   )
 }

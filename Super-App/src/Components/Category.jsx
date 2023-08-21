@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './Styles/Category.css'
 
 import Cards from './Cards';
@@ -17,6 +17,9 @@ import horror from '../assets/Horror.png'
 import fantasy from '../assets/Fantasy.png'
 import music from '../assets/Music.png'
 import fiction from '../assets/Fiction.png'
+
+// importing the context
+import { categoryContext } from '../Context/categoryContext'
 
 function Genres() {
 
@@ -43,6 +46,7 @@ function Genres() {
 
   return (
     <div className='body'>
+
       <div className="lhs">
         {/* Left side of the page */}
 
@@ -53,21 +57,23 @@ function Genres() {
         <h1 className='Choose'>Choose your entertainment category</h1>
 
         <div className="chips">
+        <categoryContext.Provider value={{ActionToggle,setActionToggle, DramaToggle, setDramaToggle, RomanceToggle, setRomanceToggle, ThrillerToggle, setThrillerToggle, WesternToggle, setWesternToggle, HorrorToggle, setHorrorToggle, FantasyToggle, setFantasyToggle, MusicToggle, setMusicToggle, FictionToggle, setFictionToggle}}>
           <div className="chipRows">
-            { ActionToggle && <Chips chipTitle={'Action'}/>}
-            { DramaToggle && <Chips chipTitle={'Drama'}/>}
-            { RomanceToggle && <Chips chipTitle={'Romance'}/>}
+            { ActionToggle && <Chips chipTitle={'Action'} toggleFunc={()=>setActionToggle(!ActionToggle)}/>}
+            { DramaToggle && <Chips chipTitle={'Drama'} toggleFunc = {()=>setDramaToggle(!DramaToggle)} />}
+            { RomanceToggle && <Chips chipTitle={'Romance'} toggleFunc={()=>setRomanceToggle(!RomanceToggle)} />}
           </div>
           <div className="chipRows">
-            { ThrillerToggle && <Chips chipTitle={'Thriller'}/>}
-            { WesternToggle && <Chips chipTitle={'Western'}/>}
-            { HorrorToggle && <Chips chipTitle={'Horror'}/>}
+            { ThrillerToggle && <Chips chipTitle={'Thriller'} toggleFunc={()=>setThrillerToggle(!ThrillerToggle)}/>}
+            { WesternToggle && <Chips chipTitle={'Western'} toggleFunc={()=>setWesternToggle(!WesternToggle)}/>}
+            { HorrorToggle && <Chips chipTitle={'Horror'} toggleFunc={()=>setHorrorToggle(!HorrorToggle)} />}
           </div>
           <div className="chipRows">
-            { FantasyToggle && <Chips chipTitle={'Fantasy'}/>}
-            { MusicToggle && <Chips chipTitle={'Music'}/>}
-            { FictionToggle && <Chips chipTitle={'Fiction'}/>}
+            { FantasyToggle && <Chips chipTitle={'Fantasy'} toggleFunc={()=>setFantasyToggle(!FantasyToggle)} />}
+            { MusicToggle && <Chips chipTitle={'Music'} toggleFunc={()=>setMusicToggle(!MusicToggle)} />}
+            { FictionToggle && <Chips chipTitle={'Fiction'} toggleFunc={()=>setFictionToggle(!FictionToggle)} />}
           </div>
+          </categoryContext.Provider>
         </div>
 
         <span className="warning">
@@ -82,22 +88,23 @@ function Genres() {
 
       <div className="rhs">
         {/* Right side of the page */}
+        <categoryContext.Provider value={{ActionToggle,setActionToggle, DramaToggle, setDramaToggle, RomanceToggle, setRomanceToggle, ThrillerToggle, setThrillerToggle, WesternToggle, setWesternToggle, HorrorToggle, setHorrorToggle, FantasyToggle, setFantasyToggle, MusicToggle, setMusicToggle, FictionToggle, setFictionToggle}}>
         <div className="cardRow">
-          <Cards cardTitle="Action" cardBg="#FF5209" cardImg={action} onClick={()=>setActionToggle(!ActionToggle)}/>
-          <Cards cardTitle="Drama" cardBg="#D7A4FF" cardImg={drama}/>
-          <Cards cardTitle="Romance" cardBg="#148A08" cardImg={romance}/>
+          <Cards cardTitle="Action" cardBg="#FF5209" cardImg={action} toggleFunction={() => setActionToggle(!ActionToggle)}/>
+          <Cards cardTitle="Drama" cardBg="#D7A4FF" cardImg={drama} toggleFunction={() => setDramaToggle(!DramaToggle)}/>
+          <Cards cardTitle="Romance" cardBg="#148A08" cardImg={romance} toggleFunction={() => setRomanceToggle(!RomanceToggle)}/>
         </div>
         <div className="cardRow">
-          <Cards cardTitle="Thriller" cardBg="#84C2FF" cardImg={thriller}/>
-          <Cards cardTitle="Western" cardBg="#902500" cardImg={western}/>
-          <Cards cardTitle="Horror" cardBg="#7358FF" cardImg={horror}/>
+          <Cards cardTitle="Thriller" cardBg="#84C2FF" cardImg={thriller} toggleFunction={() => setThrillerToggle(!ThrillerToggle)}/>
+          <Cards cardTitle="Western" cardBg="#902500" cardImg={western} toggleFunction={() => setWesternToggle(!WesternToggle)}/>
+          <Cards cardTitle="Horror" cardBg="#7358FF" cardImg={horror} toggleFunction={() => setHorrorToggle(!HorrorToggle)}/>
         </div>
         <div className="cardRow">
-          <Cards cardTitle="Fantasy" cardBg="#FF4ADE" cardImg={fantasy}/>
-          <Cards cardTitle="Music" cardBg="#E61E32" cardImg={music}/>
-          <Cards cardTitle="Fiction" cardBg="#6CD061" cardImg={fiction}/>
+          <Cards cardTitle="Fantasy" cardBg="#FF4ADE" cardImg={fantasy} toggleFunction={() => setFantasyToggle(!FantasyToggle)}/>
+          <Cards cardTitle="Music" cardBg="#E61E32" cardImg={music} toggleFunction={() => setMusicToggle(!MusicToggle)}/>
+          <Cards cardTitle="Fiction" cardBg="#6CD061" cardImg={fiction} toggleFunction={() => setFictionToggle(!FictionToggle)}/>
         </div>
-
+        </categoryContext.Provider>
         <button className="next">
           Next Page 
         </button>
