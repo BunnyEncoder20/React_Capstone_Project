@@ -1,5 +1,5 @@
 .chip {
-    width: fit-content;
+    width:180px;
     height: 52px;
     box-sizing: border-box;
     padding: 0 10px;
@@ -10,6 +10,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    margin: 1%;
 }
 .chiptext{
     color: #FFF;

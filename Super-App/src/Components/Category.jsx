@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Styles/Category.css'
 
 import Cards from './Cards';
@@ -18,8 +18,6 @@ import fantasy from '../assets/Fantasy.png'
 import music from '../assets/Music.png'
 import fiction from '../assets/Fiction.png'
 
-// importing the context
-import { categoryContext } from '../Context/categoryContext'
 
 function Genres() {
 
@@ -43,6 +41,24 @@ function Genres() {
   const [MusicToggle, setMusicToggle] = useState(false);
   const [FictionToggle, setFictionToggle] = useState(false);
 
+  const [Categories, setCategories] = useState(true);
+
+  // function to verify number of categories selected:
+  const countCategories = () => {
+    const toggles = [
+      ActionToggle, DramaToggle, RomanceToggle,
+      ThrillerToggle, WesternToggle, HorrorToggle,
+      FantasyToggle, MusicToggle, FictionToggle
+    ] ;
+
+    const trueToggles = toggles.filter((toggle)=>{toggle}) ;
+    console.log(trueToggles.length);
+
+    if(trueToggles.length<3)
+    {  setCategories(()=>{Categories=false}) ; }
+    else 
+    { setCategories(()=>{Categories=true}) ; }
+  }
 
   return (
     <div className='body'>
@@ -57,7 +73,7 @@ function Genres() {
         <h1 className='Choose'>Choose your entertainment category</h1>
 
         <div className="chips">
-        <categoryContext.Provider value={{ActionToggle,setActionToggle, DramaToggle, setDramaToggle, RomanceToggle, setRomanceToggle, ThrillerToggle, setThrillerToggle, WesternToggle, setWesternToggle, HorrorToggle, setHorrorToggle, FantasyToggle, setFantasyToggle, MusicToggle, setMusicToggle, FictionToggle, setFictionToggle}}>
+        
           <div className="chipRows">
             { ActionToggle && <Chips chipTitle={'Action'} toggleFunc={()=>setActionToggle(!ActionToggle)}/>}
             { DramaToggle && <Chips chipTitle={'Drama'} toggleFunc = {()=>setDramaToggle(!DramaToggle)} />}
@@ -73,11 +89,11 @@ function Genres() {
             { MusicToggle && <Chips chipTitle={'Music'} toggleFunc={()=>setMusicToggle(!MusicToggle)} />}
             { FictionToggle && <Chips chipTitle={'Fiction'} toggleFunc={()=>setFictionToggle(!FictionToggle)} />}
           </div>
-          </categoryContext.Provider>
+          
         </div>
 
-        <span className="warning">
-          <PiWarningFill size={30} /> Minimum 3 category required 
+        <span className={`warning ${ Categories ? 'hidden' : 'show' }`}>
+          <PiWarningFill size={30} style={{position:'relative', top:'1%',}}/> Minimum 3 category required 
           {/* 
             Using size attribute of icons, you can change the size of the icons 
             Easiest weay to customize the icons : 
@@ -88,24 +104,24 @@ function Genres() {
 
       <div className="rhs">
         {/* Right side of the page */}
-        <categoryContext.Provider value={{ActionToggle,setActionToggle, DramaToggle, setDramaToggle, RomanceToggle, setRomanceToggle, ThrillerToggle, setThrillerToggle, WesternToggle, setWesternToggle, HorrorToggle, setHorrorToggle, FantasyToggle, setFantasyToggle, MusicToggle, setMusicToggle, FictionToggle, setFictionToggle}}>
+        
         <div className="cardRow">
-          <Cards cardTitle="Action" cardBg="#FF5209" cardImg={action} toggleFunction={() => setActionToggle(!ActionToggle)}/>
-          <Cards cardTitle="Drama" cardBg="#D7A4FF" cardImg={drama} toggleFunction={() => setDramaToggle(!DramaToggle)}/>
-          <Cards cardTitle="Romance" cardBg="#148A08" cardImg={romance} toggleFunction={() => setRomanceToggle(!RomanceToggle)}/>
+          <Cards cardTitle="Action" cardBg="#FF5209" cardImg={action} toggleFunction={() => setActionToggle(!ActionToggle)} toggleBorder={ActionToggle}/>
+          <Cards cardTitle="Drama" cardBg="#D7A4FF" cardImg={drama} toggleFunction={() => setDramaToggle(!DramaToggle)} toggleBorder={DramaToggle}/>
+          <Cards cardTitle="Romance" cardBg="#148A08" cardImg={romance} toggleFunction={() => setRomanceToggle(!RomanceToggle)} toggleBorder={RomanceToggle}/>
         </div>
         <div className="cardRow">
-          <Cards cardTitle="Thriller" cardBg="#84C2FF" cardImg={thriller} toggleFunction={() => setThrillerToggle(!ThrillerToggle)}/>
-          <Cards cardTitle="Western" cardBg="#902500" cardImg={western} toggleFunction={() => setWesternToggle(!WesternToggle)}/>
-          <Cards cardTitle="Horror" cardBg="#7358FF" cardImg={horror} toggleFunction={() => setHorrorToggle(!HorrorToggle)}/>
+          <Cards cardTitle="Thriller" cardBg="#84C2FF" cardImg={thriller} toggleFunction={() => setThrillerToggle(!ThrillerToggle)} toggleBorder={ThrillerToggle}/>
+          <Cards cardTitle="Western" cardBg="#902500" cardImg={western} toggleFunction={() => setWesternToggle(!WesternToggle)} toggleBorder={WesternToggle}/>
+          <Cards cardTitle="Horror" cardBg="#7358FF" cardImg={horror} toggleFunction={() => setHorrorToggle(!HorrorToggle)} toggleBorder={HorrorToggle}/>
         </div>
         <div className="cardRow">
-          <Cards cardTitle="Fantasy" cardBg="#FF4ADE" cardImg={fantasy} toggleFunction={() => setFantasyToggle(!FantasyToggle)}/>
-          <Cards cardTitle="Music" cardBg="#E61E32" cardImg={music} toggleFunction={() => setMusicToggle(!MusicToggle)}/>
-          <Cards cardTitle="Fiction" cardBg="#6CD061" cardImg={fiction} toggleFunction={() => setFictionToggle(!FictionToggle)}/>
+          <Cards cardTitle="Fantasy" cardBg="#FF4ADE" cardImg={fantasy} toggleFunction={() => setFantasyToggle(!FantasyToggle)} toggleBorder={FantasyToggle}/>
+          <Cards cardTitle="Music" cardBg="#E61E32" cardImg={music} toggleFunction={() => setMusicToggle(!MusicToggle)} toggleBorder={MusicToggle}/>
+          <Cards cardTitle="Fiction" cardBg="#6CD061" cardImg={fiction} toggleFunction={() => setFictionToggle(!FictionToggle)} toggleBorder={FictionToggle}/>
         </div>
-        </categoryContext.Provider>
-        <button className="next">
+        
+        <button className="next" onClick={countCategories} disabled={!Categories}>
           Next Page 
         </button>
       </div>

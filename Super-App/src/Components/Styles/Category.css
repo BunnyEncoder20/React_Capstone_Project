@@ -26,7 +26,7 @@ body, html {
     margin: 0; 
 }
 .title {
-    margin-top: 2%;
+    margin-top: 0;
     margin-bottom: 9%;
     text-align: left;
 }
@@ -47,6 +47,8 @@ body, html {
     font-style: normal;
     font-weight: 700;
     line-height: 139.688%; /* 94.988px */
+    
+    margin-bottom: 5px;
 }
 
 .chips {
@@ -62,8 +64,24 @@ body, html {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 5px 0;
 }
 
+.warning {
+    color: #F00;
+    font-family: 'Roboto';
+    font-size: 25.14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 105.688%; /* 26.57px */
+    letter-spacing: 0.503px;
+}
+.show {
+    display: block;
+}
+.hidden {
+    display: none;
+}
 
 
 
@@ -79,7 +97,7 @@ body, html {
     align-items: center; /* Horizontally center */
     color: white;
 
-    border-left: 2px solid greenyellow;
+    /* border-left: 2px solid greenyellow; */
     position: relative; /* Add this line */
     padding-top: 2%;
 }

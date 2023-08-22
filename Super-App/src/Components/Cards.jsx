@@ -1,13 +1,11 @@
-import React,{ useEffect, useContext } from 'react'
+import React,{ useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import './Styles/Cards.css'
 import WebFont from 'webfontloader';
 
-// Importing the context
-import { categoryContext } from '../Context/categoryContext';
 
-function Cards({cardTitle, cardImg, cardBg, toggleFunction}) {
+function Cards({cardTitle, cardImg, cardBg, toggleFunction, toggleBorder}) {
 
     useEffect(() => {
         WebFont.load({
@@ -67,7 +65,7 @@ function Cards({cardTitle, cardImg, cardBg, toggleFunction}) {
     }
 
   return (
-    <div className='cardContainer' style={cardContainerBgStyle} onClick={toggleFunction}>
+    <div className={toggleBorder ? 'cardContainer' : 'cardContainerNOborder'}  style={cardContainerBgStyle} onClick={toggleFunction}>
         <h1 className='cardTitle'>{cardTitle}</h1>
         <img src={cardImg} alt="Card Image" className='cardImg'/>
     </div>
